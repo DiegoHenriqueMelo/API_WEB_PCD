@@ -1,5 +1,5 @@
-import { IFBR } from "../class/ifbr.js";
-import * as DB from "../../repository/insertDB/queryTools.js";
+import { IFBR } from "../entities/class/ifbr.js";
+import * as DB from "../../repositories/queryTools.js";
 
 /**
  * Função assíncrona para criar um conjunto completo de registros IFBR associados a um candidato.
