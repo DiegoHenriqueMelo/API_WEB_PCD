@@ -24,26 +24,31 @@ O projeto visa a criação de uma **plataforma back-end** completa para:
 A arquitetura do projeto é baseada em **padrões MVC desacoplados**, visando escalabilidade, manutenibilidade e clareza de código:
 ````bash
 src/
+├── config/
 ├── controller/
-│ ├── colaborador/
-│ ├── controllerUser/
+│ │   └── user/
 │ ├── IFBR/
-│ └── server/
 ├── model/
-│ ├── class/
-│ ├── colaborador/
+│ ├── entities/
+│ │   └── class/
+│ ├── user/
+│ │   ├── updateUser/
+│ │   ├── createUser/
+│ │   ├── deleteUser/
+│ │   └── getUser/
 │ ├── createIFBR/
-│ ├── createUser/
-│ ├── deleteUser/
-│ ├── getUser/
-│ ├── updateUser/
-│ ├── vaga/
-│ ├── validateData/
-│ └── validateId/
+│ └── vaga/
 ├── repository/
-│ └── insertDB/
 │   └── queryTools.ts
-└── index.ts
+├── routes/
+│   └── routes.ts
+├── utils/
+│   └── controller.ts
+├── validation/
+│   └── validateData.ts
+│   └── validateId.ts
+├── index.ts
+└── .env
 ````
 
 ---
