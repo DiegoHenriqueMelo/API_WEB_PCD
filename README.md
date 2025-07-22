@@ -5,7 +5,7 @@ Bem-vindo ao repositório da **APL PCD API**, uma aplicação robusta construíd
 ---
 
 ## REPOSITÓRIO ORIGINAL
-O repositório original com branch e commits personalidades pode ser encontrado em  [Github](https://github.com/caua-mendonca/APL_PCD_API). Códigos de minha autoria
+O repositório original com branch e commits personalizados pode ser encontrado em [Github](https://github.com/caua-mendonca/APL_PCD_API). Códigos de minha autoria
 
 ## 📊 Objetivo do Projeto
 
