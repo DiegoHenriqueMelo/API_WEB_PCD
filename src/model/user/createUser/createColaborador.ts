@@ -1,4 +1,5 @@
 import { Colaborador } from "../../entities/class/colaborador.js";
+import {validateIdByRelation} from "../../../validation/validateId/validateId.js";
 import * as DB from "../../../repositories/queryTools.js";
 
 /**
@@ -16,7 +17,11 @@ export let createColaborador = async (
   },
   id_empresa: string
 ) => {
-  let errorLog = [];
+  console.log("🚀 Validando id da empresa");
+  let result = await validateIdByRelation(id_empresa, "tb_empresa", "id");
+  if(result === false){
+    throw new Error(`Empresa ${id_empresa} nao encontrada`);
+  }
   console.log("Iniciando criação do colaborador pela classe Colaborador");
   
   let colaborador = new Colaborador(

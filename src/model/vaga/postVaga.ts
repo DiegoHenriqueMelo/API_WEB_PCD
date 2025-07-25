@@ -1,6 +1,7 @@
 import { Vaga } from "../entities/class/Vaga.js";
 import { validateDate } from "../../validation/validateData/validateDataVaga.js";
 import * as DB from "../../repositories/queryTools.js";
+import { validateIdByRelation } from "../../validation/validateId/validateId.js";
 
 /**
  * Cria uma nova vaga vinculada a uma empresa ou colaborador.
@@ -103,6 +104,9 @@ export let registerCandidateToVaga = async (
   console.log(`${logPrefix} - Iniciando inscrição do candidato na vaga`);
 
   try {
+    let id_candidateValid = await validateIdByRelation(id_candidate, "tb_candidato", "id");
+    if(id_candidateValid === false) throw new Error(`${logPrefix} - Candidato inválido`);
+
     let result = await DB.insertCandidateVaga(id_candidate, id_vaga);
     console.log(`${logPrefix} - Inscrição do candidato concluída com sucesso`);
     return result;

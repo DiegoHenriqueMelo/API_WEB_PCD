@@ -24,8 +24,8 @@ export let validateCpf = (cpf: string): boolean => {
 };
 
 
-export let validateCpfToDB = async (value: string, data:string): Promise<any> => {
-  let result: any = Number(await DB.validateData(value, data));
+export let validateCpfToDB = async (value: string, data:string,  table: string): Promise<any> => {
+  let result: any = Number(await DB.validateData(value, data, table));
   result > 0 ? result = false :result =  true;
 
   console.log("RESULTADO DA FUNÇÃO validateCpfToDB:", result);

@@ -87,7 +87,7 @@ export let conectServ = (PORT: string) => {
   });
 
   APP.delete(Routes.deleteCanditado, async (req, res) => {
-    const id = Number(req.params.id);
+    const id = String(req.params.id);
     console.log(`🚀 [DELETE /candidato/${id}] Requisição recebida`);
 
     try {
@@ -168,7 +168,7 @@ export let conectServ = (PORT: string) => {
   });
 
   APP.delete(Routes.deleteContratante, async (req, res) => {
-    const id = Number(req.params.id);
+    const id = String(req.params.id);
     console.log(`🚀 [DELETE /contratante/${id}] Requisição recebida`);
 
     let result = await controllerContratante.controllerDeleteContratante(id);

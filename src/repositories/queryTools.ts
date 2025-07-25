@@ -384,13 +384,13 @@ export let selectFromIdWhere = async (
  */
 export let deleteFromTable = async (
   table: string,
-  id: number
+  id: string
 ): Promise<any> => {
   try {
     console.log(`[deleteFromTable] Atualizando status para false no registro ID ${id} da tabela ${table}`);
 
     let result = await DB.pool.query(
-      `UPDATE ${table} SET status = $1 WHERE id = $2;`,
+      `UPDATE ${table} SET status_usuario = $1 WHERE id = $2;`,
       [false, id]
     );
 
@@ -604,9 +604,9 @@ export const insertCandidateVaga = async (
 }
 
 
-export let validateData = async (value: string, data:string): Promise<any> => {
+export let validateData = async (value: string, data:string, table: string): Promise<any> => {
   try{
-    let result = await DB.pool.query(`SELECT ${data} FROM tb_candidato WHERE ${data} = $1`, [value]);
+    let result = await DB.pool.query(`SELECT ${data} FROM ${table} WHERE ${data} = $1`, [value]);
     console.log(result.rows.length)
     return result.rows.length
   } catch (error) {

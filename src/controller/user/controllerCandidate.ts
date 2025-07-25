@@ -85,7 +85,7 @@ export let controllerGetCandidatoById = async (id: string) => {
  * @param id - ID do candidato a ser deletado
  * @returns resultado do delete ou false se não encontrado
  */
-export let controllerDeleteCandidato = async (id: number) => {
+export let controllerDeleteCandidato = async (id: string) => {
   console.log(`🚀 Iniciando controllerDeleteCandidato para ID: ${id}`);
 
   let result = await deleteUser("tb_candidato", id);

@@ -60,7 +60,7 @@ export let controllerGetContratanteById = async (id: string) => {
  * @param id - ID do contratante a ser deletado
  * @returns true se deletado, false caso contrário
  */
-export let controllerDeleteContratante = async (id: number) => {
+export let controllerDeleteContratante = async (id: string) => {
   console.log("🚀 Passando ao controllerDeleteContratante()");
   let result = await deleteUser("tb_empresa", id);
 

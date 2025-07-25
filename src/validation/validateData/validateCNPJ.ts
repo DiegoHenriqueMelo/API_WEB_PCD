@@ -1,3 +1,5 @@
+import * as DB from "../../repositories/queryTools.js";
+
 /**
  * Valida um CNPJ verificando formato, repetição e dígitos verificadores.
  * @param cnpj - string com 14 dígitos do CNPJ a validar
@@ -14,7 +16,7 @@ export function validateCNPJ(cnpj: string): boolean {
   // Função interna para calcular dígito verificador do CNPJ
   const calcularDigito = (base: string, pesos: number[]) => {
     const soma = base
-      .split('')
+      .split("")
       .reduce((acc, num, i) => acc + parseInt(num) * pesos[i], 0);
 
     const resto = soma % 11;
@@ -36,3 +38,17 @@ export function validateCNPJ(cnpj: string): boolean {
   // Compara o CNPJ original com o base + dígitos verificadores calculados
   return cnpj === base + digito1.toString() + digito2.toString();
 }
+
+export let validateCNPJToDB = async (
+  values: string,
+  data: string,
+  table: string
+) => {
+  let result = await DB.validateData(values, data, table);
+
+  result > 0 ? (result = false) : (result = true);
+
+  console.log("RESULTADO DA FUNÇÃO validateCpfToDB:", result);
+
+  return result;
+};

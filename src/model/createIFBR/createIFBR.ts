@@ -1,5 +1,7 @@
 import { IFBR } from "../entities/class/ifbr.js";
 import * as DB from "../../repositories/queryTools.js";
+import {validateIdByRelation} from "../../validation/validateId/validateId.js";
+import { error } from "console";
 
 /**
  * Função assíncrona para criar um conjunto completo de registros IFBR associados a um candidato.
@@ -17,6 +19,11 @@ export let createIFBRCompleto = async (
 
   try {
     console.info(`${logPrefix} - Iniciando processamento do IFBR completo`);
+    let result = await validateIdByRelation(id_user, "tb_candidato_ifbr", "tb_candidato_id");
+
+    if(result === true){
+      throw new Error(`${logPrefix} - ERRO ao validar ID: ID ja possui um formulario preenchido`);
+    }
 
     // Função para gerar ID único para o conjunto IFBR
     const setId = (): string => {
@@ -29,6 +36,8 @@ export let createIFBRCompleto = async (
     console.debug(`${logPrefix} - Gerado ID único para IFBR: ${idIFBR}`);
 
     const questIFBR: IFBR[] = [];
+
+    
 
     // Construção e validação dos dados IFBR
     body.forEach((element) => {

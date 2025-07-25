@@ -37,3 +37,17 @@ export let validateIdCandidato = async (id: string): Promise<boolean> => {
   console.log(`✔️ Resultado da validação: ${isValid}`);
   return isValid;
 };
+
+export let validateIdByRelation = async (
+  value: string,
+  data: string,
+  table: string
+): Promise<boolean> => {
+  console.log(`🚀 Validando se ID é existente: ${value}`);
+  let result = await Db.validateData(value, table, data);
+  if (result > 0) {
+    return true;
+  } else {
+    return false;
+  }
+};

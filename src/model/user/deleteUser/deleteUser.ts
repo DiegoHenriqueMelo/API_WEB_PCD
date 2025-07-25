@@ -1,6 +1,6 @@
 import * as DB from "../../../repositories/queryTools.js";
 
-export let deleteUser = async (table: string, id: number) => {
+export let deleteUser = async (table: string, id: string) => {
   const logPrefix = `[deleteUser][Table: ${table}][ID: ${id}]`;
 
   try {
