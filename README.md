@@ -26,27 +26,19 @@ A arquitetura do projeto é baseada em **padrões MVC desacoplados**, visando es
 src/
 ├── config/
 ├── controller/
-│ │   └── user/
-│ ├── IFBR/
+│ ├── user/
+│ └── IFBR/
 ├── model/
 │ ├── entities/
 │ │   └── class/
+│ ├── IFBR/
 │ ├── user/
-│ │   ├── updateUser/
-│ │   ├── createUser/
-│ │   ├── deleteUser/
-│ │   └── getUser/
-│ ├── createIFBR/
 │ └── vaga/
-├── repository/
-│   └── queryTools.ts
 ├── routes/
-│   └── routes.ts
 ├── utils/
-│   └── controller.ts
 ├── validation/
-│   └── validateData.ts
-│   └── validateId.ts
+│   └── validateData/
+│   └── validateId/
 ├── index.ts
 └── .env
 ````
