@@ -1,8 +1,5 @@
-import { createContratante } from "../../model/user/createUser/createUser.js";
-import * as getUser  from "../../model/user/getUser/getUser.js";
-import { deleteUser } from "../../model/user/deleteUser/deleteUser.js";
-import { updateUser } from "../../model/user/updateUser/updateUser.js";
-import { createVaga } from "../../model/vaga/postVaga.js";
+import * as Model from "../../model/user/modelUser.js";
+
 
 /**
  * Controller responsável por criar um novo contratante.
@@ -22,7 +19,7 @@ export let controllerContratante = (user: {
   acessibilidade: string;
 }) => {
   console.log("🚀 Passando ao createContratante()");
-  let response = createContratante(user);
+  let response = Model.createContratante(user);
   return response;
 };
 
@@ -32,7 +29,7 @@ export let controllerContratante = (user: {
  */
 export let controllerGetContratante = async () => {
   console.log("🚀 Passando ao controllerGetContratante()");
-  let result = await getUser.getUser("contratante");
+  let result = await Model.getUser("contratante");
   console.log(`✔️ Contratantes encontrados: ${result.rows.length}`);
   return result.rows;
 };
@@ -44,7 +41,7 @@ export let controllerGetContratante = async () => {
  */
 export let controllerGetContratanteById = async (id: string) => {
   console.log("🚀 Passando ao controllerGetContratanteById()");
-  let result = await getUser.getUserByID("tb_empresa", id);
+  let result = await Model.getUserByID("tb_empresa", id);
 
   if (result.rows.length > 0) {
     console.log(`✔️ Contratante com ID ${id} encontrado`);
@@ -62,7 +59,7 @@ export let controllerGetContratanteById = async (id: string) => {
  */
 export let controllerDeleteContratante = async (id: string) => {
   console.log("🚀 Passando ao controllerDeleteContratante()");
-  let result = await deleteUser("tb_empresa", id);
+  let result = await Model.deleteUser("tb_empresa", id);
 
   if (result) {
     console.log(`✔️ Contratante com ID ${id} deletado com sucesso`);
@@ -79,9 +76,9 @@ export let controllerDeleteContratante = async (id: string) => {
  * @param body - Objeto com os dados a serem atualizados
  * @returns resultado da atualização ou false em caso de falha
  */
-export let controllerUpdateContratante = async (id: number, body: object) => {
+export let controllerUpdateContratante = async (id: string, body: object) => {
   console.log("🚀 Passando ao controllerUpdateContratante()");
-  let result = await updateUser("tb_empresa", id, body);
+  let result = await Model.updateUser("tb_empresa", id, body);
 
   if (result) {
     console.log(`✔️ Contratante com ID ${id} atualizado com sucesso`);

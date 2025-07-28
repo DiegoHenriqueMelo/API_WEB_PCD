@@ -1,4 +1,4 @@
-import * as IFBR from "../../model/createIFBR/createIFBR.js";
+import * as IFBR from "../../model/IFBR/modelIFBR.js";
 
 /**
  * Controller para criar um formulário IFBR completo.
